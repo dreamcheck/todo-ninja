@@ -5,6 +5,21 @@
     <!-- team content -->
     <v-container class="my-5">
 
+      <v-layout row class="mb-3">
+
+        <!-- order by project name -->
+        <v-btn small flat color="grey" @click="sortBy('title')">
+          <v-icon left>folder</v-icon>
+          <span class="caption text-lowercase">By project name</span>
+        </v-btn>
+
+        <!-- order by person -->
+        <v-btn small flat color="grey" @click="sortBy('person')">
+          <v-icon left>person</v-icon>
+          <span class="caption text-lowercase">By person name</span>
+        </v-btn>
+      </v-layout>
+
       <v-card flat v-for="(project, i) in projects" :key="i">
         <v-layout row wrap :class="`pa-3 project ${project.status}`" justify-center>
           <v-flex xs12 md6>
@@ -74,6 +89,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    sortBy(props) {
+      this.projects.sort((a, b) => (a[props] < b[props] ? -1 : 1));
+    },
   },
 };
 </script>
