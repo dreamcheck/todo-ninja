@@ -13,7 +13,9 @@
 
             <!-- image -->
             <v-responsive class="pt-4">
-              image goes here
+              <v-avatar size="100" class="grey lighten-4">
+                <img :src="person.avatar">
+              </v-avatar>
             </v-responsive>
 
             <!-- text -->
@@ -47,11 +49,11 @@ export default {
   data() {
     return {
       team: [
-        { name: 'Jack Subagja', role: 'Web Developer' },
-        { name: 'Gopi Irwanshah', role: 'Web Developer' },
-        { name: 'Jodi Haruz', role: 'Mobile Developer' },
-        { name: 'Merta Anji', role: 'IOT Developer' },
-        { name: 'Tude Ajuz', role: 'DevOps' },
+        { name: 'Jack Subagja', role: 'Web Developer', avatar: '/avatar-1.png' },
+        { name: 'Gopi Irwanshah', role: 'Web Developer', avatar: '/avatar-2.png' },
+        { name: 'Jodi Haruz', role: 'Mobile Developer', avatar: '/avatar-3.png' },
+        { name: 'Merta Anji', role: 'IOT Developer', avatar: '/avatar-4.png' },
+        { name: 'Tude Ajuz', role: 'DevOps', avatar: '/avatar-5.png' },
       ],
     };
   },

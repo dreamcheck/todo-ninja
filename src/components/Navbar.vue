@@ -26,6 +26,16 @@
     <!-- navigation drawer or menu left -->
     <v-navigation-drawer app v-model="drawer" class="primary">
 
+      <!-- avatar -->
+      <v-layout column align-center>
+        <v-flex class="mt-5">
+          <v-avatar size="100">
+            <img src="avatar-1.png">
+          </v-avatar>
+          <p class="subheading white--text my-1">Jack Subagja</p>
+        </v-flex>
+      </v-layout>
+
       <!-- container of lists -->
       <v-list>
 
@@ -67,7 +77,7 @@ export default {
         },
         {
           icon: 'folder',
-          text: 'Projects',
+          text: 'My Projects',
           path: '/projects',
         },
         {
