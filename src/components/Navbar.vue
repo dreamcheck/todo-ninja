@@ -24,8 +24,8 @@
 
 
     <!-- navigation drawer or menu left -->
-    <v-navigation-drawer app v-model="drawer" class="indigo">
-      <p>Test</p>
+    <v-navigation-drawer app v-model="drawer" class="primary">
+      <p class="warning">Test</p>
     </v-navigation-drawer>
 
   </nav>
