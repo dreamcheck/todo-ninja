@@ -2,30 +2,28 @@
   <div class="home">
     <h1>Home</h1>
 
-    <!-- Red background and white text -->
-    <p class="red white--text">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque, odit!
-    </p>
+    <v-btn flat class="red white--text">click me</v-btn>
+    <v-btn depressed dark color="red">click me</v-btn>
+    <v-btn flat color="red">click me</v-btn>
 
-    <!-- Make pink background lighten and red text darken -->
-    <p class="pink lighten-4 red--text text--darken-4">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, maiores!
-    </p>
+    <v-btn depressed color="red white--text">
+      <v-icon left>email</v-icon>
+      <span>email me</span>
+    </v-btn>
 
-    <!-- The biggest display text -->
-    <h1 class="display-4">Massive Text</h1>
+    <v-btn small depressed color="red white--text">
+      <v-icon small left>email</v-icon>
+      <span>email me</span>
+    </v-btn>
 
-    <!-- The smallest displat text -->
-    <h4 class="display-1">Small Text</h4>
+    <v-btn large depressed color="red white--text">
+      <span>email me</span>
+      <v-icon large right>email</v-icon>
+    </v-btn>
 
-    <!-- headline text -->
-    <p class="headline">this is headline</p>
-
-    <!-- subheading text -->
-    <p class="subheading">this is subheading</p>
-
-    <!-- caption -->
-    <p class="caption">this is caption</p>
+    <v-btn depressed fab small dark color="purple">
+      <v-icon>favorite</v-icon>
+    </v-btn>
   </div>
 </template>
 
