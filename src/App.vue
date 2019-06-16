@@ -5,7 +5,7 @@
     <Navbar />
 
     <!-- Content -->
-    <v-content>
+    <v-content class="mx-4 mb-5">
       <router-view></router-view>
     </v-content>
 
