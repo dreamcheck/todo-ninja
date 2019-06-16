@@ -8,16 +8,25 @@
       <v-layout row class="mb-3">
 
         <!-- order by project name -->
-        <v-btn small flat color="grey" @click="sortBy('title')">
-          <v-icon left>folder</v-icon>
-          <span class="caption text-lowercase">By project name</span>
-        </v-btn>
+        <!-- toolip -->
+        <v-tooltip top>
+          <v-btn small flat color="grey" @click="sortBy('title')" slot="activator">
+            <v-icon left>folder</v-icon>
+            <span class="caption text-lowercase">By project name</span>
+          </v-btn>
+
+          <span>Sort projects by project name</span> <!--toolip message-->
+        </v-tooltip>
 
         <!-- order by person -->
-        <v-btn small flat color="grey" @click="sortBy('person')">
-          <v-icon left>person</v-icon>
-          <span class="caption text-lowercase">By person name</span>
-        </v-btn>
+        <!-- tooltip -->
+        <v-tooltip top>
+          <v-btn small flat color="grey" @click="sortBy('person')" slot="activator">
+            <v-icon left>person</v-icon>
+            <span class="caption text-lowercase">By person</span>
+          </v-btn>
+          <span>Sort projects by person</span> <!--toolip message-->
+        </v-tooltip>
       </v-layout>
 
       <v-card flat v-for="(project, i) in projects" :key="i">
@@ -83,7 +92,7 @@ export default {
         {
           title: 'Map app',
           person: 'Gopi Irwanshah',
-          due: '3st Mei 2021',
+          due: '3rd Mei 2021',
           status: 'overdue',
           content: '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, provident.',
         },
