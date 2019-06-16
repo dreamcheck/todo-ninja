@@ -25,7 +25,29 @@
 
     <!-- navigation drawer or menu left -->
     <v-navigation-drawer app v-model="drawer" class="primary">
-      <p class="warning">Test</p>
+
+      <!-- container of lists -->
+      <v-list>
+
+        <!-- lists -->
+        <v-list-tile v-for="(link, i) in links" :key="i" router :to="link.path">
+
+          <!-- action -->
+          <v-list-tile-action>
+            <v-icon class="white--text">{{ link.icon }}</v-icon>
+          </v-list-tile-action>
+
+          <!-- list content -->
+          <v-list-tile-content>
+
+            <!-- list title -->
+            <v-list-tile-title class="white--text">{{ link.text }}</v-list-tile-title>
+
+          </v-list-tile-content>
+
+        </v-list-tile>
+      </v-list>
+
     </v-navigation-drawer>
 
   </nav>
@@ -37,6 +59,23 @@ export default {
   data() {
     return {
       drawer: false,
+      links: [
+        {
+          icon: 'dashboard',
+          text: 'Dashboard',
+          path: '/',
+        },
+        {
+          icon: 'folder',
+          text: 'Projects',
+          path: '/projects',
+        },
+        {
+          icon: 'person',
+          text: 'Team',
+          path: '/team',
+        },
+      ],
     };
   },
 };
