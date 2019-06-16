@@ -6,7 +6,7 @@
     <v-container class="my-5">
 
       <v-card flat v-for="(project, i) in projects" :key="i">
-        <v-layout row wrap :class="`pa-3 project ${project.status}`">
+        <v-layout row wrap :class="`pa-3 project ${project.status}`" justify-center>
           <v-flex xs12 md6>
             <div class="caption grey--text">Project Title</div>
             <div>{{ project.title }}</div>
@@ -20,8 +20,11 @@
             <div>{{ project.due }}</div>
           </v-flex>
           <v-flex xs2 sm4 md2>
-            <div class="caption grey--text">Status</div>
-            <div>{{ project.status }}</div>
+            <div class="right">
+              <v-chip small :class="`${project.status} white--text my-2`">
+                {{ project.status }}
+              </v-chip>
+            </div>
           </v-flex>
         </v-layout>
 
@@ -84,5 +87,14 @@ export default {
 }
 .project.overdue {
   border-left: 4px solid tomato;
+}
+.v-chip.completed {
+  background: #3cd1c2;
+}
+.v-chip.ongoing {
+  background: orange;
+}
+.v-chip.overdue {
+  background: tomato;
 }
 </style>
