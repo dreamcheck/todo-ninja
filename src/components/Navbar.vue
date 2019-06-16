@@ -14,27 +14,6 @@
       <!-- be a space -->
       <v-spacer></v-spacer>
 
-      <!-- <v-menu offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn
-            color="primary"
-            dark
-            v-on="on"
-          >
-            Dropdown
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-tile
-            v-for="(item, index) in items"
-            :key="index"
-            @click="() => {}"
-          >
-            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu> -->
-
       <!-- dropdown menu -->
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
@@ -76,6 +55,11 @@
           </v-avatar>
           <p class="subheading white--text my-1">Jack Subagja</p>
         </v-flex>
+
+        <!-- popup activator -->
+        <v-flex class="my-3">
+          <Popup />
+        </v-flex>
       </v-layout>
 
       <!-- container of lists -->
@@ -106,8 +90,13 @@
 </template>
 
 <script>
+import Popup from './Popup.vue';
+
 export default {
   name: 'navbar',
+  components: {
+    Popup,
+  },
   data() {
     return {
       drawer: false,
