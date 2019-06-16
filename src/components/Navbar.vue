@@ -1,7 +1,10 @@
 <template>
   <nav>
-    <v-toolbar app flat>
 
+    <!-- toolbar or header navbar -->
+    <v-toolbar app flat>
+      <!-- icon menu left -->
+      <v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
       <!-- title -->
       <v-toolbar-title class="text-uppercase grey--text">
         <span class="font-weight-light">Todo</span>
@@ -18,11 +21,23 @@
       </v-btn>
 
     </v-toolbar>
+
+
+    <!-- navigation drawer or menu left -->
+    <v-navigation-drawer app v-model="drawer" class="indigo">
+      <p>Test</p>
+    </v-navigation-drawer>
+
   </nav>
 </template>
 
 <script>
 export default {
   name: 'navbar',
+  data() {
+    return {
+      drawer: false,
+    };
+  },
 };
 </script>
