@@ -62,47 +62,32 @@
 </template>
 
 <script>
+import db from '@/fb';
 
 export default {
   name: 'dashboard',
   data() {
     return {
-      projects: [
-        {
-          title: 'Design new website',
-          person: 'Jack Subagja',
-          due: '21st Jun 2020',
-          status: 'ongoing',
-          content: '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, provident.',
-        },
-        {
-          title: 'Make a landing pade',
-          person: 'Iwan Suckojo',
-          due: '1st Sep 2020',
-          status: 'completed',
-          content: '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, provident.',
-        },
-        {
-          title: 'Car wash app',
-          person: 'John Lendie',
-          due: '30th Jan 2020',
-          status: 'completed',
-          content: '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, provident.',
-        },
-        {
-          title: 'Map app',
-          person: 'Gopi Irwanshah',
-          due: '3rd Mei 2021',
-          status: 'overdue',
-          content: '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, provident.',
-        },
-      ],
+      projects: [],
     };
   },
   methods: {
     sortBy(props) {
       this.projects.sort((a, b) => (a[props] < b[props] ? -1 : 1));
     },
+  },
+  created() {
+    db.collection('projects').onSnapshot((res) => {
+      const changes = res.docChanges();
+      changes.forEach((change) => {
+        if (change.type === 'added') {
+          this.projects.push({
+            ...change.doc.data(),
+            id: change.doc.id,
+          });
+        }
+      });
+    });
   },
 };
 </script>

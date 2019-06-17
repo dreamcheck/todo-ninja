@@ -104,7 +104,7 @@ export default {
           this.dialog = false;
           this.$emit('addProject');
         } catch (error) {
-          console.error(`Error writing document: ${error}`);
+          // console.error(`Error writing document: ${error}`);
         }
       }
     },
