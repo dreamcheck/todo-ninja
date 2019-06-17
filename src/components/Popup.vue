@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- dialog -->
-    <v-dialog width="500" flat>
+    <v-dialog width="500" flat v-model="dialog">
 
       <!-- activator slot -->
       <template v-slot:activator="{ on }">
@@ -49,7 +49,14 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn flat class="success mx-0 mt-3" @click="submit">Add Project</v-btn>
+            <v-btn
+              flat
+              class="success mx-0 mt-3"
+              @click="submit"
+              :loading="loading"
+              >
+              Add Project
+            </v-btn>
           </v-form>
         </v-card-text>
       </v-card>
@@ -72,11 +79,16 @@ export default {
         required: v => !!v || 'Required',
         min: v => v.length >= 3 || 'Minimum length is 3 characters',
       },
+      dialog: false,
+      loading: false,
     };
   },
   methods: {
     async submit() {
       if (this.$refs.form.validate()) {
+        this.loading = true;
+
+        // payload
         const project = {
           title: this.title,
           content: this.content,
@@ -88,7 +100,8 @@ export default {
         // Adding data to database
         try {
           await db.collection('projects').add(project);
-          console.log('data added');
+          this.loading = false;
+          this.dialog = false;
         } catch (error) {
           console.error(`Error writing document: ${error}`);
         }
