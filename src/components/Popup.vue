@@ -102,6 +102,7 @@ export default {
           await db.collection('projects').add(project);
           this.loading = false;
           this.dialog = false;
+          this.$emit('addProject');
         } catch (error) {
           console.error(`Error writing document: ${error}`);
         }
