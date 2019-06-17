@@ -36,7 +36,7 @@
 
             <!-- date input -->
             <v-menu block full-width class="mt-2">
-              <v-text-field 
+              <v-text-field
                 :value="formattedDate"
                 slot="activator"
                 label="Due date"
@@ -59,6 +59,7 @@
 
 <script>
 import format from 'date-fns/format';
+import db from '@/fb';
 
 export default {
   name: 'popup',
@@ -74,9 +75,23 @@ export default {
     };
   },
   methods: {
-    submit() {
+    async submit() {
       if (this.$refs.form.validate()) {
-        console.log({ title: this.title, content: this.content, due: this.due });
+        const project = {
+          title: this.title,
+          content: this.content,
+          due: this.formattedDate,
+          person: 'Jack Subagja',
+          status: 'ongoing',
+        };
+
+        // Adding data to database
+        try {
+          await db.collection('projects').add(project);
+          console.log('data added');
+        } catch (error) {
+          console.error(`Error writing document: ${error}`);
+        }
       }
     },
   },
