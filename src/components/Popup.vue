@@ -19,18 +19,30 @@
 
         <!-- content -->
         <v-card-text>
-          <v-form class="px-3">
-            <v-text-field label="Title" v-model="title" prepend-icon="folder" clearable></v-text-field>
-            <v-textarea label="Information" v-model="content" prepend-icon="edit" clearable auto-grow></v-textarea>
+          <v-form class="px-3" ref="form">
+            <v-text-field
+              label="Title"
+              v-model="title"
+              prepend-icon="folder"
+              :rules="[rules.required, rules.min]">
+            </v-text-field>
+            <v-textarea
+              label="Information"
+              v-model="content"
+              prepend-icon="edit"
+              auto-grow
+              :rules="[rules.required, rules.min]">
+            </v-textarea>
 
             <!-- date input -->
-            <v-menu block full-width>
+            <v-menu block full-width class="mt-2">
               <v-text-field 
                 :value="formattedDate"
                 slot="activator"
                 label="Due date"
                 prepend-icon="date_range"
-                clearable>
+                clearable
+                :rules="[rules.required]">
               </v-text-field>
               <v-date-picker v-model="due"></v-date-picker>
             </v-menu>
@@ -54,12 +66,18 @@ export default {
     return {
       title: '',
       content: '',
-      due: null,
+      due: new Date().toISOString().substr(0, 10),
+      rules: {
+        required: v => !!v || 'Required',
+        min: v => v.length >= 3 || 'Minimum length is 3 characters',
+      },
     };
   },
   methods: {
     submit() {
-      console.log({ title: this.title, content: this.content, due: this.due });
+      if (this.$refs.form.validate()) {
+        console.log({ title: this.title, content: this.content, due: this.due });
+      }
     },
   },
   computed: {
